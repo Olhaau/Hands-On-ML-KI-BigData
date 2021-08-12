@@ -2,6 +2,7 @@
 Overview of hands-on methods and applications of ML, KI and Big Data.
 
 ## Resources
+Beck, M., Dumpert, F., & Feuerhake, J. (2018). Machine Learning in Official Statistics. <i>arXiv preprint arXiv:1812.10422</i>.
 Géron, A. (2019). <i> Hands-on machine learning with Scikit-Learn, Keras, and TensorFlow: Concepts, tools, and techniques to build intelligent systems</i>. O'Reilly Media
 
 <!--
