@@ -1,8 +1,8 @@
 
 
 
-# Hands-On ML, AI an Big Data
-Overview of hands-on methods and applications of ML, AI and Big Data.
+# Hands-On  Machine Learning, Artificial Intelligence (AI), Big Data and its Applications
+Overview of hands-on methods of machine learning (ML), artificial intelligence (AI), Big Data and its applications in official statistics using Scikit-Learn, Keras and TensorFlow.
 
 ## Table of Contents
 - [Fundamentals of ML](#fundamentals-of-ml)
