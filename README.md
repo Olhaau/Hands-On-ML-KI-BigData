@@ -1,18 +1,22 @@
 
 
 
-# Hands-On ML, KI an Big Data
-Overview of hands-on methods and applications of ML, KI and Big Data.
+# Hands-On ML, AI an Big Data
+Overview of hands-on methods and applications of ML, AI and Big Data.
 
 ## Table of Contents
 - [Fundamentals of ML](#fundamentals-of-ml)
 - [Neural Networks and Deep Learning](#neural-networks-and-deep-learning)
+- [Applications in Official Statistics](#applications-in-official-statistics)
 - [Resources](#resources)
 
 ## Fundamentals of ML
 ...
 
 ## Neural Networks and Deep Learning
+...
+
+## Applications in Official Statistics
 ...
 
 ## Resources
