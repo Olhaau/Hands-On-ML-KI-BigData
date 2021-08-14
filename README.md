@@ -1,5 +1,19 @@
+
+
+
 # Hands-On ML, KI an Big Data
 Overview of hands-on methods and applications of ML, KI and Big Data.
+
+## Table of Contents
+- [Fundamentals of ML](#fundamentals-of-ml)
+- [Neural Networks and Deep Learning](#neural-networks-and-deep-learning)
+- [Resources](#resources)
+
+## Fundamentals of ML
+...
+
+## Neural Networks and Deep Learning
+...
 
 ## Resources
 1. Beck, M., Dumpert, F., & Feuerhake, J. (2018). Machine Learning in Official Statistics. <i>
@@ -9,4 +23,6 @@ Overview of hands-on methods and applications of ML, KI and Big Data.
 
 <!--
 TODO:
+-> table of content generator: 
+https://ecotrust-canada.github.io/markdown-toc/
 -->
