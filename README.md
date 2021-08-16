@@ -62,7 +62,9 @@ A overview of tasks to gain hands-on experience with Big Data infrastructures an
 
 
 ## Applications In Official Statistics
-...
+![application_table](https://github.com/Olhaau/Hands-On-ML-KI-BigData/blob/main/ML_Applications_in_OS.csv)
+
+
 
 ## Resources
 1. Beck, M., Dumpert, F., & Feuerhake, J. (2018). Machine Learning in Official Statistics. <i>
