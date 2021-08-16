@@ -35,7 +35,7 @@ A overview of tasks to gain hands-on experience with Big Data infrastructures an
 - [x] manage massive matrices with shared memory and memory-mapped files (e.g. bigmemory package for R), see https://cran.r-project.org/web/packages/bigmemory/bigmemory.pdf
 
 ### Configurate A Virtual Machine Cluster On A Single Host
-- [ ] configurate e.g. Ubuntu over VirtualBox
+- [ ] configurate multiple connected vitual machines e.g. Ubuntu over VirtualBox
 
 <b> Remarks and Resources </b>
 - remark: only for personal experience and just limited advantage in processing
