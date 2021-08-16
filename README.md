@@ -62,8 +62,8 @@ A overview of tasks to gain hands-on experience with Big Data infrastructures an
 
 
 ## Applications In Official Statistics
-![application_table](https://github.com/Olhaau/Hands-On-ML-KI-BigData/blob/main/ML_Applications_in_OS.csv)
-
+![Table of applications in official statistics](https://github.com/Olhaau/Hands-On-ML-KI-BigData/blob/main/ML_Applications_in_OS.csv) (csv)
+ from <a href=https://arxiv.org/abs/1812.10422> Beck, Dumpert, Feuerhake,  (2018) </a>
 
 
 ## Resources
