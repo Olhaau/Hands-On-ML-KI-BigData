@@ -41,7 +41,7 @@ With Neural Networks can be tinkered in the [TensorFlow playground](http://playg
 ...
 
 ## Hands-On Big Data Processing
-A overview of tasks to gain hands-on experience with Big Data infrastructures and possible experience gained by them.
+A overview of tasks to gain hands-on experience with Big Data infrastructures.
 
 ### Optimize Data Processing On One Device
 - [x] use the GPU-support of TensorFlow, see https://www.tensorflow.org/install/gpu
