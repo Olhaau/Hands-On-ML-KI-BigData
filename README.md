@@ -9,7 +9,8 @@ Overview of hands-on methods of machine learning (ML), artificial intelligence (
 TODO: Soll sich einklappen
 -->
 
-- [Fundamentals of ML](#fundamentals-of-ml)
+- [Fundamentals of ML](#fundamentals-of-machine-learning)
+  * [6. Decision Trees](#6-decision-trees)
 - [Neural Networks and Deep Learning](#neural-networks-and-deep-learning)
 - [Hands-On Big Data Processing](#hands-on-big-data-processing)
   * [Optimize Data Processing On One Device](#optimize-data-processing-on-one-device)
@@ -23,10 +24,17 @@ TODO: Soll sich einklappen
 ## Fundamentals of Machine Learning
 ...
 
+### 6. Decision Trees
+Decision Tree from Scratch: 
+
+[![decision tree from scratch](https://img.youtube.com/vi/LDRbO9a6XPU/0.jpg)](https://www.youtube.com/watch?v=LDRbO9a6XPU)
+
+ ...
+
 ## Neural Networks and Deep Learning
 ...
 
-With Neural Networks (TensorFlow) can be tinkered [here](http://playground.tensorflow.org/#activation=sigmoid&batchSize=10&dataset=xor&regDataset=reg-plane&learningRate=1&regularizationRate=0&noise=20&networkShape=2,2,2,2&seed=0.88379&showTestData=false&discretize=false&percTrainData=70&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false)
+With Neural Networks (TensorFlow) can be tinkered [here](http://playground.tensorflow.org/#activation=sigmoid&batchSize=10&dataset=xor&regDataset=reg-plane&learningRate=1&regularizationRate=0&noise=20&networkShape=2,2,2,2&seed=0.88379&showTestData=false&discretize=false&percTrainData=70&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false).
 
 
 ## Hands-On Big Data Processing
