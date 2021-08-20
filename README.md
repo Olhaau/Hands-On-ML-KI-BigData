@@ -25,11 +25,13 @@ TODO: Soll sich einklappen
 ...
 
 ### 6. Decision Trees
-Decision Tree from Scratch: 
+Decision Tree Classifier from Scratch (Google Developers): 
 
-[![decision tree from scratch](https://img.youtube.com/vi/LDRbO9a6XPU/0.jpg)](https://www.youtube.com/watch?v=LDRbO9a6XPU)
+<p align="center">
+<a align ="center" href="https://www.youtube.com/watch?v=LDRbO9a6XPU" title="Link Title"><img src="https://img.youtube.com/vi/LDRbO9a6XPU/0.jpg" alt="Alternate Text" /></a>
+</p>
 
- ...
+...
 
 ## Neural Networks and Deep Learning
 ...
@@ -91,4 +93,8 @@ TODO:
 https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
 -> table of content generator: 
 https://ecotrust-canada.github.io/markdown-toc/
+
+-> markdown for video preview
+[![decision tree from scratch](https://img.youtube.com/vi/LDRbO9a6XPU/0.jpg)](https://www.youtube.com/watch?v=LDRbO9a6XPU)
+
 -->
