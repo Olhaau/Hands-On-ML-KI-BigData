@@ -68,7 +68,7 @@ A overview of tasks to gain hands-on experience with Big Data infrastructures an
 ![Table of applications in official statistics](https://github.com/Olhaau/Hands-On-ML-KI-BigData/blob/main/ML_Applications_in_OS.csv) (csv), which can be found in the meta analysis of <a href=https://arxiv.org/abs/1812.10422> Beck, Dumpert, Feuerhake,  (2018)</a>. Overview of the applications and used machine learning methods in official statistics:
 
 <p align="center">
-  <img width="500" height="500" src="https://github.com/Olhaau/Hands-On-ML-KI-BigData/blob/main/heatmap_ml_methods_and_applications_3.png">
+  <img width="500"  src="https://github.com/Olhaau/Hands-On-ML-KI-BigData/blob/main/heatmap_ml_methods_and_applications_4.png">
 </p>
 
 ## Resources
