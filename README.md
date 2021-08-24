@@ -5,23 +5,17 @@
 Overview of hands-on methods of machine learning (ML), artificial intelligence (AI), Big Data and its applications in official statistics using Scikit-Learn, Keras and TensorFlow.
 
 ## Table of Contents
-<!--
-TODO: Soll sich einklappen
--->
-
 - [I. Fundamentals of Machine Learning](#i-fundamentals-of-machine-learning)
   * [6. Decision Trees](#6-decision-trees)
 - [II. Neural Networks and Deep Learning](#ii-neural-networks-and-deep-learning)
   * [15. Processing Sequences Using RNNs and CNNs](#15-processing-sequences-using-rnns-and-cnns)
+    + [Description of RNNs](#description-of-rnns)
     + [Forecasting a Time Series](#forecasting-a-time-series)
       - [Forecasting a single Time Series](#forecasting-a-single-time-series)
-      - [Baseline Metrics](#baseline-metrics)
-      - [Simple RNN](#simple-rnn)
-      - [Deep RNNs](#deep-rnns)
-      - [Forecasting Several Time Steps Ahead](#forecasting-several-time-steps-ahead)
-      - [Handling Long Sequences](#handling-long-sequences)
+      - [Model Comparison](#model-comparison)
+    + [Handling Long Sequences](#handling-long-sequences)
       - [Fighting the Unstable Gradients Problem](#fighting-the-unstable-gradients-problem)
-      - [LSTM](#lstm)
+      - [Tackling the Short-Term Memory Problem](#tackling-the-short-term-memory-problem)
 - [III. Big Data Processing](#iii-big-data-processing)
   * [Optimize Data Processing On One Device](#optimize-data-processing-on-one-device)
   * [Configurate A Virtual Machine Cluster On A Single Host](#configurate-a-virtual-machine-cluster-on-a-single-host)
@@ -30,6 +24,7 @@ TODO: Soll sich einklappen
   * [Build A Big Data Laboratory Using Multiple Hosts](#build-a-big-data-laboratory-using-multiple-hosts)
 - [IV. Applications In Official Statistics](#iv-applications-in-official-statistics)
 - [Resources](#resources)
+
 
 ## I. Fundamentals of Machine Learning
 ...
@@ -56,42 +51,44 @@ Introduction:
 ...
 
 ### 15. Processing Sequences Using RNNs and CNNs
+
 * **RNN** - recurrent neural network
 * **CNN** - convolutional neural network
 
-Applications:
-* predict the future (up to a point)
-* analyse time series data, e.g. stock prices
-* anticipate car trajectories in autonomous driving systems
-* NLP, e.g. automatic translation or speech-to-text
+#### Description of RNNs
+* RNNs are similar to feedforward neural networs, except it has connections pointed backward
+* Applications: inputs can be sequences of arbitrary lengths (e.g. sentences, documents, audio samples; rather than on fixed-sized inputs like most other nets), which lets RNNs very versatile handle e.g. 
+  * analysis and prediction of time series, 
+  * anticipating car trajectories in autonomous driving systems, 
+  * automatic translation, 
+  * converting speech-to-text
+* Difficulties:
+  * unstable gradients, which can be alleviated using e.g. recurrent dropout or recurrent layer normalization
+  * (very) limited short-term memory, which can be extendet using LSTM and GRU cells
+* Alternatives: other neural networks can handle sequential data, e.g.:
+  * for small sequences, a regular dense network can work
+  * for long sequences (e.g. audio samples or text), CNNs work quite well (e.g. WaveNet)
+* A RNN is trained by **backpropagation through time (BPTT)**, which unrolls it through time and uses regular backpropagation
 
-Inputs: they can work on sequences of arbitrary lengths, rather than on fixed-sized inputs like most other nets, e.g.
-* sentences
-* documents
-* audio samples
+<details><summary>show more theoretical details </summary>
+<p>
 
-Difficulties of RNNs:
-* unstable gradients, which can be alleviated using e.g. recurrent dropout or recurrent layer normalization
-* (very) limited short-term memory, which can be extendet using LSTM and GRU cells
-
-Alternatives: other neural networks can handle sequential data, e.g.:
-* for small sequences, a regular dense network works
-* for long sequences (e.g. audio samples or text), CNNs work quite well (e.g. WaveNet)
-
-#### Recurrent Neurons and Layers
-* **feedforward neural networks** - actrivations flow only in one direction, from the input to the output layer
+ **Recurrent Neurons and Layers**
+ 
+* **feedforward neural networks** - activations flow only in one direction, from the input to the output layer
 * RNN are similar, except it has connections pointing backward
 * simplest example: a network composed of only one neuron receiving inputs, produce an output and sending that output to itself
 * **unrolling the network through time** - represent the network once per time step
 
-#### Memory Cells
+**Memory Cells**
+ 
 * **memory cell (or cell)** - part of a neural network that preserves some state across time steps
 * a single recurrent neuron or a layer of recurrent neurons, is a very basic cell capable of learning only short patterns (typically ~10 steps, depending on the task) since its output at time step *t* is a function of all the inputs from previous time steps
 * more complex cells are capable of learning longer pattern (~100 steps, depending on the task)
 * a cell's state at time step **h** (for **hidden**) is a function of some inputs at that time and its  state at a previous time step 
 
-#### Input and Output Sequences
-Possible Input and Output of RNNs:
+**Possible Inputs and Outputs**
+ 
 * **sequence-to-sequence** - e.g. inputs are the values of a time series over the last *N* days until today, outputs are the values from *N*-1 days ago to tomorrow
 * **sequence-to-vector** 
 * **vector-to-sequence**
@@ -99,13 +96,16 @@ Possible Input and Output of RNNs:
   * the encoder converts sentence into a single vector representation 
   * the decoder would convert this vector into a sentence in another language
 
-#### Training RNNs
+**Training RNNs**
+ 
 A RNN is trained by **backpropagation through time (BPTT)**, which unrolls it through time and uses regular backpropagation:
 1. first a forward pass through the unrolled network
 2. the output sequence is evaluated using a cost function (may ignore some outputs)
 3. the gradients of that cost function are then propagated backward through the unrolled network
 4. model parameters are updated using the computed gradients (the gradients flow backward through alle the outputs used by the cost function, not just the final output)
-
+ </p>
+</details>
+ 
 #### Forecasting a Time Series
 **Time series** - sequence of one (called univariate) or more (called multivariate) values per time step
 
@@ -121,32 +121,149 @@ A single (time-series) can be forecasted using a stacked LSTM model in https://g
 </p>
 
 
-##### Baseline Metrics
-We use the results of an example in Géron, 2019, p. 503 ff: 10000 timeseries, where each series is the sum of two sine waves of fixed amplitudes but random frequencies and phases, plus a bit of noise, see https://github.com/ageron/handson-ml2/blob/master/15_processing_sequences_using_rnns_and_cnns.ipynb. Create a training, validation and test set from it:
+#####  Model Comparison
+We use the results of an example in Géron, 2019, p. 503 ff: 10000 timeseries, where each series is the sum of two sine waves of fixed amplitudes but random frequencies and phases, plus a bit of noise, see https://github.com/ageron/handson-ml2/blob/master/15_processing_sequences_using_rnns_and_cnns.ipynb. 
 
+Create a training, validation and test set from it:
 
+```python
+n_Steps = 50
+series = generate_time_series(10000, n_steps + 1)
+X_train, y_train = series[:7000, :n_steps], series[:7000, -1]
+X_valid, y_valid = series[7000:9000, :n_steps], series[7000:9000, -1]
+X_test, y_test = series[9000:, :n_steps], series[9000:, -1]
+```
+Note that the imput features are generally represented as 3D arrays of shape 
+
+\[batch size = number of time series, time steps (of the time series), dimensonality (of the input)\].
+
+**Baseline Metrics**
 
 Before using RNNs, it is often a good idea to calculate the error (e.g. MSE) of some baseline estimations:
-* naive forecasting (predict the last value of the series), MSE in example: 0.020
-* fully connected network (e.g. linear regression), MSE in exampe: 0.004
+1. **naive forecasting** (predict the last value in each series), MSE = 0.020
+   <details><summary>show code</summary>
+   <p>
+ 
+   ```python
+   y_pred = X_valid[:, -1]
+   np.mean(keras.losses.mean_squared_error(y_valid, y_pred))
+   ```
+ 
+   </p>
+   </details>
 
-##### Simple RNN
-MSE in example: 0.014
 
-##### Deep RNNs
-MSE in example: 0.003
 
-##### Forecasting Several Time Steps Ahead
+
+2. **fully connected network** (e.g. linear regression), MSE = 0.004
+   <details><summary>show code</summary>
+   <p>
+    
+   ```python
+   model = keras.models.Sequential([
+       keras.layers.Flatten(input_shape=[50, 1]),
+       keras.layers.Dense(1)
+   ])
+
+   model.compile(loss="mse", optimizer="adam")
+   history = model.fit(X_train, y_train, epochs=20,
+                    validation_data=(X_valid, y_valid))
+                    
+   model.evaluate(X_valid, y_valid)               
+   ```
+    
+   </p>
+   </details>
+
+**Simple RNN**, MSE = 0.014
+<details><summary>show code</summary>
+<p>
+ 
+```python
+model = keras.models.Sequential([
+    keras.layers.SimpleRNN(1, input_shape=[None, 1])
+])
+
+optimizer = keras.optimizers.Adam(lr=0.005)
+model.compile(loss="mse", optimizer=optimizer)
+history = model.fit(X_train, y_train, epochs=20,
+                    validation_data=(X_valid, y_valid))
+
+model.evaluate(X_valid, y_valid)
+```
+ 
+</p>
+</details>
+   
+**Deep RNNs**, MSE = 0.003
+<details><summary>show code</summary>
+<p>
+ 
+```python
+model = keras.models.Sequential([
+    keras.layers.SimpleRNN(20, return_sequences=True, input_shape=[None, 1]),
+    keras.layers.SimpleRNN(20, return_sequences=True),
+    keras.layers.SimpleRNN(1)
+])
+
+model.compile(loss="mse", optimizer="adam")
+history = model.fit(X_train, y_train, epochs=20,
+                    validation_data=(X_valid, y_valid))
+
+model.evaluate(X_valid, y_valid)
+```
+</p>
+</details>
+ 
+**Forecasting Several Time Steps Ahead**
+
+In the example, we will predict *n* = 10 steps ahead.
+
+baseline:
+* **naive** (constant in the next *n* steps): MSE = 0.223
+* **linear model**: MSE = 0.0188
+
+
+Possible implementations:
+* predict iteratively single next values (erros might accumulate), MSE = 0.029
+  <details><summary>show code</summary>
+  <p>
+   
+  ```python
+  series = generate_time_series(1, n_steps + 10)
+  X_new, Y_new = series[:, :n_steps], series[:, n_steps:]
+  X = X_new
+  for step_ahead in range(10):
+      y_pred_one = model.predict(X[:, step_ahead:])[:, np.newaxis, :]
+      X = np.concatenate([X, y_pred_one], axis=1)
+
+  Y_pred = X[:, n_steps:]
+  ```
+  </p>
+  </details>
+  
+* train a new RNN to predict all next *n* values at once, MSE = 0.008
+  <details><summary>show code</summary>
+  <p>
+   
+  ```python
+  ...
+  ```
+  </p>
+  </details>
 ...
 
-##### Handling Long Sequences
-...
+#### Handling Long Sequences
 
 ##### Fighting the Unstable Gradients Problem
-...
+Problem: ...
+Solutions:
+* ...
+* ...
 
-##### LSTM
-...
+##### Tackling the Short-Term Memory Problem
+Problem: ...
+Solution: LSTM, GRU
 
 
 
