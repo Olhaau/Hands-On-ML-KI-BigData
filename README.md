@@ -47,7 +47,8 @@ Introduction:
 ...
 
 ### 15. Processing Sequences Using RNNs and CNNs
-**RNN** - recurrent neural network
+* **RNN** - recurrent neural network
+* **CNN** - convolutional neural network
 
 Applications:
 * predict the future (up to a point)
@@ -60,10 +61,13 @@ Inputs: they can work on sequences of arbitrary lengths, rather than on fixed-si
 * documents
 * audio samples
 
-Difficulties that RNNs face:
-* Unstable gradients, which can be alleviated using e.g. recurrent dropout or recurrent layer normalization
-* (Very) limited short-term memory, which can be extendet using LSTM and GRU cells
+Difficulties of RNNs:
+* unstable gradients, which can be alleviated using e.g. recurrent dropout or recurrent layer normalization
+* (very) limited short-term memory, which can be extendet using LSTM and GRU cells
 
+Alternatives: other neural networks can handle sequential data, e.g.:
+* for small sequences, a regular dense network works
+* for long sequences (e.g. audio samples or text), CNNs work quite well (e.g. WaveNet)
 
 #### Forecasting a Time Series
 **Time series** - sequence of one (called univariate) or more (called multivariate) values per time step
