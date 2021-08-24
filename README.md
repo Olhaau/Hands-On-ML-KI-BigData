@@ -47,10 +47,30 @@ Introduction:
 ...
 
 ### 15. Processing Sequences Using RNNs and CNNs
-See https://github.com/ageron/handson-ml2/blob/master/15_processing_sequences_using_rnns_and_cnns.ipynb
+**RNN** - recurrent neural network
+
+Applications:
+* predict the future (up to a point)
+* analyse time series data, e.g. stock prices
+* anticipate car trajectories in autonomous driving systems
+* NLP, e.g. automatic translation or speech-to-text
+
+Inputs: they can work on sequences of arbitrary lengths, rather than on fixed-sized inputs like most other nets, e.g.
+* sentences
+* documents
+* audio samples
+
+Difficulties that RNNs face:
+* Unstable gradients, which can be alleviated using e.g. recurrent dropout or recurrent layer normalization
+* (Very) limited short-term memory, which can be extendet using LSTM and GRU cells
 
 
 #### Forecasting a Time Series
+**Time series** - sequence of one (called univariate) or more (called multivariate) values per time step
+
+Typical tasks are:
+* **forecasting** - predict future values 
+* **imputation**  - predict (or rather "postdict") missing values from the past
 
 ##### Forecasting a single Time Series
 A single (time-series) can be forecasted using a stacked LSTM model in https://github.com/Olhaau/Hands-On-ML-KI-BigData/blob/main/forecast_one_timeseries_tool.ipynb, e.g.:
@@ -61,10 +81,13 @@ A single (time-series) can be forecasted using a stacked LSTM model in https://g
 
 
 ##### Baseline Metrics
-We use the results of an example in Géron, 2019 p. 503ff: 10000 timeseries, where each series is the sum of two sine waves of fixed amplitudes but random frequencies and phases, plus a bit of noise. Before using RNNs, it is often a good idea to calculate the error (e.g. MSE) of some baseline estimations:
+We use the results of an example in Géron, 2019, p. 503 ff: 10000 timeseries, where each series is the sum of two sine waves of fixed amplitudes but random frequencies and phases, plus a bit of noise, see https://github.com/ageron/handson-ml2/blob/master/15_processing_sequences_using_rnns_and_cnns.ipynb. Create a training, validation and test set from it:
+
+
+
+Before using RNNs, it is often a good idea to calculate the error (e.g. MSE) of some baseline estimations:
 * naive forecasting (predict the last value of the series), MSE in example: 0.020
 * fully connected network (e.g. linear regression), MSE in exampe: 0.004
-...
 
 ##### Simple RNN
 MSE in example: 0.014
@@ -140,6 +163,8 @@ TODO:
 https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
 -> table of content generator: 
 https://ecotrust-canada.github.io/markdown-toc/
+
+https://guides.github.com/features/mastering-markdown/
 
 -> markdown for video preview
 [![decision tree from scratch](https://img.youtube.com/vi/LDRbO9a6XPU/0.jpg)](https://www.youtube.com/watch?v=LDRbO9a6XPU)
