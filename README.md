@@ -9,19 +9,23 @@ Overview of hands-on methods of machine learning (ML), artificial intelligence (
 TODO: Soll sich einklappen
 -->
 
-- [Fundamentals of ML](#fundamentals-of-machine-learning)
+- [I. Fundamentals of Machine Learning](#i-fundamentals-of-machine-learning)
   * [6. Decision Trees](#6-decision-trees)
-- [Neural Networks and Deep Learning](#neural-networks-and-deep-learning)
-- [Hands-On Big Data Processing](#hands-on-big-data-processing)
+- [II. Neural Networks and Deep Learning](#ii-neural-networks-and-deep-learning)
+  * [15. Processing Sequences Using RNNs and CNNs](#15-processing-sequences-using-rnns-and-cnns)
+    + [Forecasting a Time Series](#forecasting-a-time-series)
+      - [Forecasting a single Time Series](#forecasting-a-single-time-series)
+      - [Baseline Metrics](#baseline-metrics)
+- [III. Big Data Processing](#iii-big-data-processing)
   * [Optimize Data Processing On One Device](#optimize-data-processing-on-one-device)
   * [Configurate A Virtual Machine Cluster On A Single Host](#configurate-a-virtual-machine-cluster-on-a-single-host)
   * [Test The Application Of Cloud Computing Services](#test-the-application-of-cloud-computing-services)
   * [Save And Process Data Remotely On A Server](#save-and-process-data-remotely-on-a-server)
   * [Build A Big Data Laboratory Using Multiple Hosts](#build-a-big-data-laboratory-using-multiple-hosts)
-- [Applications In Official Statistics](#applications-in-official-statistics)
+- [IV. Applications In Official Statistics](#iv-applications-in-official-statistics)
 - [Resources](#resources)
 
-## Fundamentals of Machine Learning
+## I. Fundamentals of Machine Learning
 ...
 
 ### 6. Decision Trees
@@ -29,32 +33,34 @@ Decision Tree Classifier from Scratch (Google Developers):
 
 <a align ="center" href="https://www.youtube.com/watch?v=LDRbO9a6XPU" title="Link Title"><img src="https://img.youtube.com/vi/LDRbO9a6XPU/0.jpg" alt="Alternate Text" /></a>
 
-
-...
-
-## Neural Networks and Deep Learning
+## II. Neural Networks and Deep Learning
 Introduction:
 * A simple neural network in 9 lines of Python code can be found [here](https://medium.com/technology-invention-and-more/how-to-build-a-simple-neural-network-in-9-lines-of-python-code-cc8f23647ca1).
 * With Neural Networks can be tinkered in the [TensorFlow playground](http://playground.tensorflow.org/#activation=sigmoid&batchSize=10&dataset=xor&regDataset=reg-plane&learningRate=1&regularizationRate=0&noise=20&networkShape=2,2,2,2&seed=0.88379&showTestData=false&discretize=false&percTrainData=70&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false).
 
 ...
 
-### Processing Sequences Using RNNs and CNNs
+### 15. Processing Sequences Using RNNs and CNNs
 See https://github.com/ageron/handson-ml2/blob/master/15_processing_sequences_using_rnns_and_cnns.ipynb
 
 
 #### Forecasting a Time Series
+
+##### Forecasting a single Time Series
 A single (time-series) can be forecasted using a stacked LSTM model in https://github.com/Olhaau/Hands-On-ML-KI-BigData/blob/main/forecast_one_timeseries_tool.ipynb, e.g.:
 
 <p align="center">
   <img width="600"  src="https://github.com/Olhaau/Hands-On-ML-KI-BigData/blob/main/forecast_timeseries_4.png">
 </p>
+
+##### Baseline Metrics
+
 ...
 
 
 
 
-## Hands-On Big Data Processing
+## III. Big Data Processing
 A overview of tasks to gain hands-on experience with Big Data infrastructures.
 
 ### Optimize Data Processing On One Device
@@ -89,7 +95,7 @@ A overview of tasks to gain hands-on experience with Big Data infrastructures.
 * see https://towardsdatascience.com/assembling-a-personal-data-science-big-data-laboratory-in-a-raspberry-pi-4-or-vms-cluster-e4c5a0473025
 
 
-## Applications In Official Statistics
+## IV. Applications In Official Statistics
 ![Table of applications in official statistics](https://github.com/Olhaau/Hands-On-ML-KI-BigData/blob/main/ML_Applications_in_OS.csv) (csv), which can be found in the meta analysis of <a href=https://arxiv.org/abs/1812.10422> Beck, Dumpert, Feuerhake,  (2018)</a>. Overview of the applications and used machine learning methods in official statistics:
 
 <p align="center">
