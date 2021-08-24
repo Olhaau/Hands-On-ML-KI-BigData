@@ -50,7 +50,7 @@ See https://github.com/ageron/handson-ml2/blob/master/15_processing_sequences_us
 A single (time-series) can be forecasted using a stacked LSTM model in https://github.com/Olhaau/Hands-On-ML-KI-BigData/blob/main/forecast_one_timeseries_tool.ipynb, e.g.:
 
 <p align="center">
-  <img width="600"  src="https://github.com/Olhaau/Hands-On-ML-KI-BigData/blob/main/timeseries_forecast.png">
+  <img width="600"  src="https://github.com/Olhaau/Hands-On-ML-KI-BigData/blob/main/timeseries_forecast_2.png">
 </p>
 ...
 
