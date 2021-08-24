@@ -27,9 +27,8 @@ TODO: Soll sich einklappen
 ### 6. Decision Trees
 Decision Tree Classifier from Scratch (Google Developers): 
 
-<p align="center">
 <a align ="center" href="https://www.youtube.com/watch?v=LDRbO9a6XPU" title="Link Title"><img src="https://img.youtube.com/vi/LDRbO9a6XPU/0.jpg" alt="Alternate Text" /></a>
-</p>
+
 
 ...
 
@@ -50,7 +49,7 @@ See https://github.com/ageron/handson-ml2/blob/master/15_processing_sequences_us
 A single (time-series) can be forecasted using a stacked LSTM model in https://github.com/Olhaau/Hands-On-ML-KI-BigData/blob/main/forecast_one_timeseries_tool.ipynb, e.g.:
 
 <p align="center">
-  <img width="600"  src="https://github.com/Olhaau/Hands-On-ML-KI-BigData/blob/main/forecast_timeseries_2.png">
+  <img width="600"  src="https://github.com/Olhaau/Hands-On-ML-KI-BigData/blob/main/forecast_timeseries_3.png">
 </p>
 ...
 
