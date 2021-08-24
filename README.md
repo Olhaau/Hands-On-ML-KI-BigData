@@ -16,6 +16,12 @@ TODO: Soll sich einklappen
     + [Forecasting a Time Series](#forecasting-a-time-series)
       - [Forecasting a single Time Series](#forecasting-a-single-time-series)
       - [Baseline Metrics](#baseline-metrics)
+      - [Simple RNN](#simple-rnn)
+      - [Deep RNNs](#deep-rnns)
+      - [Forecasting Several Time Steps Ahead](#forecasting-several-time-steps-ahead)
+      - [Handling Long Sequences](#handling-long-sequences)
+      - [Fighting the Unstable Gradients Problem](#fighting-the-unstable-gradients-problem)
+      - [LSTM](#lstm)
 - [III. Big Data Processing](#iii-big-data-processing)
   * [Optimize Data Processing On One Device](#optimize-data-processing-on-one-device)
   * [Configurate A Virtual Machine Cluster On A Single Host](#configurate-a-virtual-machine-cluster-on-a-single-host)
@@ -53,10 +59,30 @@ A single (time-series) can be forecasted using a stacked LSTM model in https://g
   <img width="600"  src="https://github.com/Olhaau/Hands-On-ML-KI-BigData/blob/main/forecast_timeseries_4.png">
 </p>
 
-##### Baseline Metrics
 
+##### Baseline Metrics
+We use the results of an example in Géron, 2019 p. 503ff: 10000 timeseries, where each series is the sum of two sine waves of fixed amplitudes but random frequencies and phases, plus a bit of noise. Before using RNNs, it is often a good idea to calculate the error (e.g. MSE) of some baseline estimations:
+* naive forecasting (predict the last value of the series), MSE in example: 0.020
+* fully connected network (e.g. linear regression), MSE in exampe: 0.004
 ...
 
+##### Simple RNN
+MSE in example: 0.014
+
+##### Deep RNNs
+MSE in example: 0.003
+
+##### Forecasting Several Time Steps Ahead
+...
+
+##### Handling Long Sequences
+...
+
+##### Fighting the Unstable Gradients Problem
+...
+
+##### LSTM
+...
 
 
 
