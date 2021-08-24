@@ -35,9 +35,18 @@ TODO: Soll sich einklappen
 ...
 
 ### 6. Decision Trees
-Decision Tree Classifier from Scratch (Google Developers): 
+
+Introduction:
+<details><summary>Decision Tree Classifier from Scratch (Google Developers)</summary>
+<p>
 
 <a align ="center" href="https://www.youtube.com/watch?v=LDRbO9a6XPU" title="Link Title"><img src="https://img.youtube.com/vi/LDRbO9a6XPU/0.jpg" alt="Alternate Text" /></a>
+
+</p>
+</details>
+
+
+
 
 ## II. Neural Networks and Deep Learning
 Introduction:
@@ -68,6 +77,34 @@ Difficulties of RNNs:
 Alternatives: other neural networks can handle sequential data, e.g.:
 * for small sequences, a regular dense network works
 * for long sequences (e.g. audio samples or text), CNNs work quite well (e.g. WaveNet)
+
+#### Recurrent Neurons and Layers
+* **feedforward neural networks** - actrivations flow only in one direction, from the input to the output layer
+* RNN are similar, except it has connections pointing backward
+* simplest example: a network composed of only one neuron receiving inputs, produce an output and sending that output to itself
+* **unrolling the network through time** - represent the network once per time step
+
+#### Memory Cells
+* **memory cell (or cell)** - part of a neural network that preserves some state across time steps
+* a single recurrent neuron or a layer of recurrent neurons, is a very basic cell capable of learning only short patterns (typically ~10 steps, depending on the task) since its output at time step *t* is a function of all the inputs from previous time steps
+* more complex cells are capable of learning longer pattern (~100 steps, depending on the task)
+* a cell's state at time step **h** (for **hidden**) is a function of some inputs at that time and its  state at a previous time step 
+
+#### Input and Output Sequences
+Possible Input and Output of RNNs:
+* **sequence-to-sequence** - e.g. inputs are the values of a time series over the last *N* days until today, outputs are the values from *N*-1 days ago to tomorrow
+* **sequence-to-vector** 
+* **vector-to-sequence**
+* **encoder** (sequence-to-vector) followed by a **decoder** (vector-to-sequence) - this could be used for translating a sentence from one language to another: 
+  * the encoder converts sentence into a single vector representation 
+  * the decoder would convert this vector into a sentence in another language
+
+#### Training RNNs
+A RNN is trained by **backpropagation through time (BPTT)**, which unrolls it through time and uses regular backpropagation:
+1. first a forward pass through the unrolled network
+2. the output sequence is evaluated using a cost function (may ignore some outputs)
+3. the gradients of that cost function are then propagated backward through the unrolled network
+4. model parameters are updated using the computed gradients (the gradients flow backward through alle the outputs used by the cost function, not just the final output)
 
 #### Forecasting a Time Series
 **Time series** - sequence of one (called univariate) or more (called multivariate) values per time step
