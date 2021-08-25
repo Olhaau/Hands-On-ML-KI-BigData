@@ -141,9 +141,7 @@ Note that the imput features are generally represented as 3D arrays of shape
 
 \[batch size = number of time series, time steps (of the time series), dimensonality (of the input)\].
 
-**Baseline Metrics**
-
-Before using RNNs, it is often a good idea to calculate the error (e.g. MSE) of some baseline estimations:
+**Baseline Metrics** - before using RNNs, it is a good idea to calculate the error (e.g. MSE) of some baseline estimations, e.g.
 1. **naive forecasting** (predict the last value in each series), MSE = 0.020
    <details><summary>show code</summary>
    <p>
@@ -155,9 +153,6 @@ Before using RNNs, it is often a good idea to calculate the error (e.g. MSE) of 
  
    </p>
    </details>
-
-
-
 
 2. **fully connected network** (e.g. linear regression), MSE = 0.004
    <details><summary>show code</summary>
