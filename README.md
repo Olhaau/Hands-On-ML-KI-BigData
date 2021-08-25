@@ -149,7 +149,7 @@ X_train, y_train = series[:7000, :n_steps], series[:7000, -1]
 X_valid, y_valid = series[7000:9000, :n_steps], series[7000:9000, -1]
 X_test, y_test = series[9000:, :n_steps], series[9000:, -1]
 ```
-Note that the imput features are generally represented as 3D arrays of shape 
+Note that the imput features are generally represented as 3D arrays of shape: 
 
 \[batch size = number of time series, time steps (of the time series), dimensonality (of the input)\].
 
