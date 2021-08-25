@@ -60,19 +60,20 @@ Introduction:
 * **CNN** - convolutional neural network
 
 ### Description of RNNs
-* RNNs are similar to feedforward neural networs, except it has connections pointed backward
-* Applications: inputs can be sequences of arbitrary lengths (e.g. sentences, documents, audio samples; rather than on fixed-sized inputs like most other nets), which lets RNNs very versatile handle e.g. 
+* **RNNs** are
+  * similar to feedforward neural networks, except it has connections pointed backward
+  * trained by **backpropagation through time (BPTT)**, which unrolls it through time and uses regular backpropagation 
+* **Applications**: inputs can be sequences of arbitrary lengths (e.g. sentences, documents, audio samples; rather than fixed-sized inputs for most other nets), which lets RNNs very versatile handle e.g. 
   * analysis and prediction of time series, 
   * anticipating car trajectories in autonomous driving systems, 
   * automatic translation, 
   * converting speech-to-text
-* Difficulties:
-  * unstable gradients, which can be alleviated using e.g. recurrent dropout or recurrent layer normalization
-  * (very) limited short-term memory, which can be extendet using LSTM and GRU cells
-* Alternatives: other neural networks can handle sequential data, e.g.:
-  * for small sequences, a regular dense network can work
-  * for long sequences (e.g. audio samples or text), CNNs work quite well (e.g. WaveNet)
-* A RNN is trained by **backpropagation through time (BPTT)**, which unrolls it through time and uses regular backpropagation
+* **Difficulties**:
+  * **unstable gradients**, which can be alleviated using e.g. recurrent dropout or recurrent layer normalization
+  * **limited short-term memory** (~10 steps backward), which can be extendet using LSTM and GRU cells (~100 steps)
+* **Alternatives**: also other neural networks can handle sequential data, e.g.:
+  * for small sequences, a **regular dense networks** can work
+  * for long sequences (e.g. audio samples or text), **CNNs** work quite well (e.g. WaveNet)
 
 <details><summary>show more theoretical details </summary>
 <p>
@@ -84,9 +85,7 @@ Introduction:
 * simplest example: a network composed of only one neuron receiving inputs, produce an output and sending that output to itself
 * **unrolling the network through time** - represent the network once per time step
 
-**Memory Cells**
- 
-* **memory cell (or cell)** - part of a neural network that preserves some state across time steps
+**Memory Cell (or simply Cell)** - part of a neural network that preserves some state across time steps
 * a single recurrent neuron or a layer of recurrent neurons, is a very basic cell capable of learning only short patterns (typically ~10 steps, depending on the task) since its output at time step *t* is a function of all the inputs from previous time steps
 * more complex cells are capable of learning longer pattern (~100 steps, depending on the task)
 * a cell's state at time step **h** (for **hidden**) is a function of some inputs at that time and its  state at a previous time step 
@@ -102,7 +101,7 @@ Introduction:
 
 **Training RNNs**
  
-A RNN is trained by **backpropagation through time (BPTT)**, which unrolls it through time and uses regular backpropagation:
+A RNN is trained by **backpropagation through time (BPTT)**, which unrolls it through time and uses regular backpropagation. In detail:
 1. first a forward pass through the unrolled network
 2. the output sequence is evaluated using a cost function (may ignore some outputs)
 3. the gradients of that cost function are then propagated backward through the unrolled network
