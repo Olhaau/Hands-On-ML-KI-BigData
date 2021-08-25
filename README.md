@@ -1,13 +1,14 @@
 
 
 
-# Hands-On  Machine Learning, Artificial Intelligence and Big Data
+Hands-On  Machine Learning, Artificial Intelligence and Big Data
+================================================================
 Overview of hands-on methods of machine learning (ML), artificial intelligence (AI), Big Data and its applications in official statistics using Scikit-Learn, Keras and TensorFlow. Great resources:
 
 * https://github.com/ageron/handson-ml2/blob/master/15_processing_sequences_using_rnns_and_cnns.ipynb
 * ...
 
-## Table of Contents
+# Table of Contents
 - [I. Fundamentals of Machine Learning](#i-fundamentals-of-machine-learning)
   * [6. Decision Trees](#6-decision-trees)
 - [II. Neural Networks and Deep Learning](#ii-neural-networks-and-deep-learning)
@@ -29,10 +30,10 @@ Overview of hands-on methods of machine learning (ML), artificial intelligence (
 - [Resources](#resources)
 
 
-## I. Fundamentals of Machine Learning
+# I. Fundamentals of Machine Learning
 ...
 
-### 6. Decision Trees
+## 6. Decision Trees
 
 Introduction:
 <details><summary>Decision Tree Classifier from Scratch (Google Developers)</summary>
@@ -46,19 +47,19 @@ Introduction:
 
 
 
-## II. Neural Networks and Deep Learning
+# II. Neural Networks and Deep Learning
 Introduction:
 * A simple neural network in 9 lines of Python code can be found [here](https://medium.com/technology-invention-and-more/how-to-build-a-simple-neural-network-in-9-lines-of-python-code-cc8f23647ca1).
 * With Neural Networks can be tinkered in the [TensorFlow playground](http://playground.tensorflow.org/#activation=sigmoid&batchSize=10&dataset=xor&regDataset=reg-plane&learningRate=1&regularizationRate=0&noise=20&networkShape=2,2,2,2&seed=0.88379&showTestData=false&discretize=false&percTrainData=70&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false).
 
 ...
 
-### 15. Processing Sequences Using RNNs and CNNs
+## 15. Processing Sequences Using RNNs and CNNs
 
 * **RNN** - recurrent neural network
 * **CNN** - convolutional neural network
 
-#### Description of RNNs
+### Description of RNNs
 * RNNs are similar to feedforward neural networs, except it has connections pointed backward
 * Applications: inputs can be sequences of arbitrary lengths (e.g. sentences, documents, audio samples; rather than on fixed-sized inputs like most other nets), which lets RNNs very versatile handle e.g. 
   * analysis and prediction of time series, 
@@ -109,14 +110,14 @@ A RNN is trained by **backpropagation through time (BPTT)**, which unrolls it th
  </p>
 </details>
  
-#### Forecasting a Time Series
+### Forecasting a Time Series
 **Time series** - sequence of one (called univariate) or more (called multivariate) values per time step
 
 Typical tasks are:
 * **forecasting** - predict future values 
 * **imputation**  - predict (or rather "postdict") missing values from the past
 
-##### Forecasting a single Time Series
+#### Forecasting a single Time Series
 A single (time-series) can be forecasted using a stacked LSTM model in https://github.com/Olhaau/Hands-On-ML-KI-BigData/blob/main/forecast_one_timeseries_tool.ipynb, e.g.:
 
 <p align="center">
@@ -124,7 +125,7 @@ A single (time-series) can be forecasted using a stacked LSTM model in https://g
 </p>
 
 
-#####  Model Comparison
+####  Model Comparison
 We use the results of an example in Géron, 2019, p. 503 ff: 10000 timeseries, where each series is the sum of two sine waves of fixed amplitudes but random frequencies and phases, plus a bit of noise, see https://github.com/ageron/handson-ml2/blob/master/15_processing_sequences_using_rnns_and_cnns.ipynb. 
 
 Create a training, validation and test set from it:
@@ -256,50 +257,50 @@ Possible implementations:
   </details>
 ...
 
-#### Handling Long Sequences
+### Handling Long Sequences
 
-##### Fighting the Unstable Gradients Problem
+#### Fighting the Unstable Gradients Problem
 Problem: ...
 
 Solutions:
 * ...
 * ...
 
-##### Tackling the Short-Term Memory Problem
+#### Tackling the Short-Term Memory Problem
 Problem: ...
 
 Solution: LSTM, GRU
 
 
 
-## III. Big Data Processing
+# III. Big Data Processing
 A overview of tasks to gain hands-on experience with Big Data infrastructures.
 
-### Optimize Data Processing On One Device
+## Optimize Data Processing On One Device
 - [x] use the GPU-support of TensorFlow, see https://www.tensorflow.org/install/gpu
 - [x] optimize performance with TensorFlow's tf.data API, see https://www.tensorflow.org/guide/data_performance  
 - [x] manage massive matrices with shared memory and memory-mapped files (e.g. bigmemory package for R), see https://cran.r-project.org/web/packages/bigmemory/bigmemory.pdf
 
-### Configurate A Virtual Machine Cluster On A Single Host
+## Configurate A Virtual Machine Cluster On A Single Host
 - [ ] configurate multiple connected vitual machines e.g. Ubuntu over VirtualBox
 
 <b> Remarks and Resources </b>
 - remark: only for personal experience and just limited advantage in processing
 - see https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.mscs.doc/GUID-01B4B067-9AAC-41C0-BF9B-1D085F36DF51.html 
 
-### Test The Application Of Cloud Computing Services 
+## Test The Application Of Cloud Computing Services 
 - [ ] process data on e.g. MS Azure, AWS (Amazon Web Services), Google Cloud, IBM Cloud, Oracle Cloud Infrastructure, CloudLinux
 
 <b> Remarks and Resources </b>
 - a comparison of services can be found here: https://www.techradar.com/best/best-cloud-computing-services
 
-### Save And Process Data Remotely On A Server
+## Save And Process Data Remotely On A Server
 - [ ] configurate e.g. a single Raspberry Pi server
 
 <b> Remarks and Resources </b>
 - see https://www.elektronik-kompendium.de/sites/raspberry-pi/2002251.htm
 
-### Build A Big Data Laboratory Using Multiple Hosts 
+## Build A Big Data Laboratory Using Multiple Hosts 
 - [ ] configurate a host cluster (e.g. a 3+ Raspberry Pi Cluster)
 - [ ] manage cluster computing using a Hadoop and Spark framework
 
@@ -307,14 +308,14 @@ A overview of tasks to gain hands-on experience with Big Data infrastructures.
 * see https://towardsdatascience.com/assembling-a-personal-data-science-big-data-laboratory-in-a-raspberry-pi-4-or-vms-cluster-e4c5a0473025
 
 
-## IV. Applications In Official Statistics
+# IV. Applications In Official Statistics
 ![Table of applications in official statistics](https://github.com/Olhaau/Hands-On-ML-KI-BigData/blob/main/ML_Applications_in_OS.csv) (csv), which can be found in the meta analysis of <a href=https://arxiv.org/abs/1812.10422> Beck, Dumpert, Feuerhake,  (2018)</a>. Overview of the applications and used machine learning methods in official statistics:
 
 <p align="center">
   <img width="600"  src="https://github.com/Olhaau/Hands-On-ML-KI-BigData/blob/main/9_heatmap_ml_methods_and_applications.png">
 </p>
 
-## Resources
+# Resources
 1. Beck, M., Dumpert, F., & Feuerhake, J. (2018). Machine Learning in Official Statistics. <i>
 <a href=https://arxiv.org/abs/1812.10422> arXiv preprint  1812.10422</a>
 </i>.
