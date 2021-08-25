@@ -74,7 +74,7 @@ Introduction:
 
 ### The Perceptron
 * one of the simplest ANN architectures composed of a single layer of TLUs (called *fully connected* or *dense* layer), each connected to all inputs and an input layer of **input neurons** (output their feed input) plus a **bias neuron** (always outputs 1)
-* a Perceptron can classify instances simultaneously into three different binary classes
+* a Perceptron can classify instances simultaneously into multiple different binary classes
 * **TLU** - a threshold logic unit computes a weighted sum of its inputs, then applies a *step function*
 * a single TLU can be used for simple linear binary classification
 * training (a layer of) TLU(s) means finding the right weights
