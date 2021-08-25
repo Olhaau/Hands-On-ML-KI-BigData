@@ -2,7 +2,10 @@
 
 
 # Hands-On  Machine Learning, Artificial Intelligence and Big Data
-Overview of hands-on methods of machine learning (ML), artificial intelligence (AI), Big Data and its applications in official statistics using Scikit-Learn, Keras and TensorFlow.
+Overview of hands-on methods of machine learning (ML), artificial intelligence (AI), Big Data and its applications in official statistics using Scikit-Learn, Keras and TensorFlow. Great resources:
+
+* https://github.com/ageron/handson-ml2/blob/master/15_processing_sequences_using_rnns_and_cnns.ipynb
+* ...
 
 ## Table of Contents
 - [I. Fundamentals of Machine Learning](#i-fundamentals-of-machine-learning)
@@ -257,12 +260,14 @@ Possible implementations:
 
 ##### Fighting the Unstable Gradients Problem
 Problem: ...
+
 Solutions:
 * ...
 * ...
 
 ##### Tackling the Short-Term Memory Problem
 Problem: ...
+
 Solution: LSTM, GRU
 
 
