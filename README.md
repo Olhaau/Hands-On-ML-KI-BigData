@@ -59,7 +59,20 @@ Introduction:
 * **RNN** - recurrent neural network
 * **CNN** - convolutional neural network
 
+Introduction:
+* A simple implementation of a RNN only using Numpy can be found [here](https://ngrayluna.github.io/post/rnn_wnumpy/)
+
 ### Description of RNNs
+
+<p align="center">
+  <img width="400"  src="https://www.researchgate.net/profile/Weijiang-Feng/publication/318332317/figure/fig1/AS:614309562437664@1523474221928/The-standard-RNN-and-unfolded-RNN.png">
+</p>
+<p align="center"> 
+ Resource: 
+ <a href="https://www.researchgate.net/publication/318332317_Audio_visual_speech_recognition_with_multimodal_recurrent_neural_networks">Feng et al., 2017, Fig. 1</a>
+</p>
+
+
 * **RNNs** are
   * similar to feedforward neural networks, except it has connections pointed backward
   * trained by **backpropagation through time (BPTT)**, which unrolls it through time and uses regular backpropagation 
