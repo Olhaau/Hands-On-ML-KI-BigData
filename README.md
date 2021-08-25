@@ -53,7 +53,36 @@ Introduction:
 * A simple neural network in 9 lines of Python code can be found [here](https://medium.com/technology-invention-and-more/how-to-build-a-simple-neural-network-in-9-lines-of-python-code-cc8f23647ca1).
 * With Neural Networks can be tinkered in the [TensorFlow playground](http://playground.tensorflow.org/#activation=sigmoid&batchSize=10&dataset=xor&regDataset=reg-plane&learningRate=1&regularizationRate=0&noise=20&networkShape=2,2,2,2&seed=0.88379&showTestData=false&discretize=false&percTrainData=70&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false).
 
-...
+<!--
+-------------------------------------------------------------------------------------------------------------------------------------
+-->
+
+## 10. Introductin to ANN with Keras
+* **ANN** - artificial neural network
+* ANNs will have a huge impact because
+  * a huge quantity of data is available now and ANNs frequently outperform other ML techniques on very large an complex problems
+  * increase in computing power make it possible to train large ANNs in reasonable amount of time
+  <details><summary>show more </summary>
+  <p>
+  
+  * training algorithms have been slightly improved to the 1990s
+  * some theoretical limitations have turned out to be benign in practice
+  * ANNSs entered a circle of funding and progress
+  
+  </p>
+  </details>
+
+### The Perceptron
+* one of the simplest ANN architectures composed of a single layer of TLUs (called *fully connected* or *dense* layer), each connected to all inputs and an input layer of **input neurons** (output their feed input) plus a **bias neuron** (always outputs 1)
+* a Perceptron can classify instances simultaneously into three different binary classes
+* **TLU** - a threshold logic unit computes a weighted sum of its inputs, then applies a *step function*
+* a single TLU can be used for simple linear binary classification
+* training (a layer of) TLU(s) means finding the right weights
+* Perceptrons are incapable of solving trivial problems, e.g. XOR classification problem, but stacking multiple layers of Perceptrons can solve XOR
+
+###  MLP
+* **MLP** - multilayer perceptron is composed of one (passthrough) *input layer*, one or more layers of TLUs, called *hidden layers*, and one final layer of TLUs called the *output layer*
+* MLPs can efficiently be trained by **backpropagation**: for each training instance, it makes a prediction (forward pass) and measures the error, then goes though each layer in reverse to measure the error contribution from each connection (reverse pass), and finally tweaks the connectin weights to reduce the error (Gradient Descent step).
 
 ## 15. Processing Sequences Using RNNs and CNNs
 
