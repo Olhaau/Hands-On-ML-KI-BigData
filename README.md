@@ -8,6 +8,7 @@ Overview of hands-on methods of machine learning (ML), artificial intelligence (
 * https://github.com/ageron/handson-ml2/blob/master/15_processing_sequences_using_rnns_and_cnns.ipynb
 * ...
 
+
 # Table of Contents
 - [I. Fundamentals of Machine Learning](#i-fundamentals-of-machine-learning)
   * [6. Decision Trees](#6-decision-trees)
@@ -86,8 +87,7 @@ Introduction:
   * **limited short-term memory** (~10 steps backward), which can be extendet using LSTM and GRU cells (~100 steps)
 * **Alternatives**: also other neural networks can handle sequential data, e.g.:
   * for small sequences, a **regular dense networks** can work
-  * for long sequences (e.g. audio samples or text), **CNNs** work quite well (e.g. WaveNet)
-
+  * for long sequences (e.g. audio samples or text), **CNNs** work quite well (e.g. WaveNet)  
 <details><summary>show more theoretical details </summary>
 <p>
 
@@ -125,7 +125,7 @@ A RNN is trained by **backpropagation through time (BPTT)**, which unrolls it th
 ### Forecasting a Time Series
 **Time series** - sequence of one (called univariate) or more (called multivariate) values per time step
 
-Typical tasks are:
+Typical tasks are:  
 * **forecasting** - predict future values 
 * **imputation**  - predict (or rather "postdict") missing values from the past
 
@@ -140,8 +140,9 @@ A single (time-series) can be forecasted using a stacked LSTM model in https://g
 ####  Model Comparison
 We use the results of an example in Géron, 2019, p. 503 ff: 10000 timeseries, where each series is the sum of two sine waves of fixed amplitudes but random frequencies and phases, plus a bit of noise, see https://github.com/ageron/handson-ml2/blob/master/15_processing_sequences_using_rnns_and_cnns.ipynb. 
 
-Create a training, validation and test set from it:
-
+<details><summary>Code to create a training, validation and test set</summary>
+ <p>
+  
 ```python
 n_Steps = 50
 series = generate_time_series(10000, n_steps + 1)
@@ -149,107 +150,121 @@ X_train, y_train = series[:7000, :n_steps], series[:7000, -1]
 X_valid, y_valid = series[7000:9000, :n_steps], series[7000:9000, -1]
 X_test, y_test = series[9000:, :n_steps], series[9000:, -1]
 ```
-Note that the imput features are generally represented as 3D arrays of shape: 
+  
+</p>
+</details>
 
-\[batch size = number of time series, time steps (of the time series), dimensonality (of the input)\].
+Note that the input features are generally represented as 3D arrays of shape:   
+> \[batch size = number of time series, time steps (of the time series), dimensonality (of the input)\]
 
-**Baseline Metrics** - before using RNNs, it is a good idea to calculate the error (e.g. MSE) of some baseline estimations, e.g.
-1. **naive forecasting** (predict the last value in each series), MSE = 0.020
-   <details><summary>show code</summary>
-   <p>
+1. **Baseline Metrics** - before using RNNs, it is a good idea to calculate the error (e.g. MSE) of some baseline estimations, e.g.
+   1. **naive forecasting** (predict the last value in each series), MSE = 0.020<br/>
+      <details><summary>show code</summary>
+      <p>
  
-   ```python
-   y_pred = X_valid[:, -1]
-   np.mean(keras.losses.mean_squared_error(y_valid, y_pred))
-   ```
+      ```python
+      y_pred = X_valid[:, -1]
+      np.mean(keras.losses.mean_squared_error(y_valid, y_pred))
+      ```
  
-   </p>
-   </details>
+      </p>
+      </details>  
+   2. **fully connected network** (e.g. linear regression), MSE = 0.004<br/>
+      <details><summary>show code</summary>
+      <p>
+     
+      ```python
+      model = keras.models.Sequential([
+              keras.layers.Flatten(input_shape=[50, 1]),
+              keras.layers.Dense(1)
+      ])
 
-2. **fully connected network** (e.g. linear regression), MSE = 0.004
-   <details><summary>show code</summary>
-   <p>
+      model.compile(loss="mse", optimizer="adam")
+      history = model.fit(X_train, y_train, epochs=20,
+                          validation_data=(X_valid, y_valid))
+                    
+      model.evaluate(X_valid, y_valid)               
+      ```
     
+     </p>
+     </details>
+
+2. **Simple RNN**, MSE = 0.014  
+   <details><summary>show code</summary>
+   <p>
+ 
    ```python
    model = keras.models.Sequential([
-       keras.layers.Flatten(input_shape=[50, 1]),
-       keras.layers.Dense(1)
-   ])
+           keras.layers.SimpleRNN(1, input_shape=[None, 1])
+           ])
 
-   model.compile(loss="mse", optimizer="adam")
+   optimizer = keras.optimizers.Adam(lr=0.005)
+   model.compile(loss="mse", optimizer=optimizer)
    history = model.fit(X_train, y_train, epochs=20,
                     validation_data=(X_valid, y_valid))
-                    
-   model.evaluate(X_valid, y_valid)               
+
+   model.evaluate(X_valid, y_valid)
    ```
-    
+ 
    </p>
    </details>
-
-**Simple RNN**, MSE = 0.014
-<details><summary>show code</summary>
-<p>
- 
-```python
-model = keras.models.Sequential([
-    keras.layers.SimpleRNN(1, input_shape=[None, 1])
-])
-
-optimizer = keras.optimizers.Adam(lr=0.005)
-model.compile(loss="mse", optimizer=optimizer)
-history = model.fit(X_train, y_train, epochs=20,
-                    validation_data=(X_valid, y_valid))
-
-model.evaluate(X_valid, y_valid)
-```
- 
-</p>
-</details>
    
-**Deep RNNs**, MSE = 0.003
-<details><summary>show code</summary>
-<p>
+3. **Deep RNNs**, MSE = 0.003
+   <details><summary>show code</summary>
+   <p>
  
-```python
-model = keras.models.Sequential([
-    keras.layers.SimpleRNN(20, return_sequences=True, input_shape=[None, 1]),
-    keras.layers.SimpleRNN(20, return_sequences=True),
-    keras.layers.SimpleRNN(1)
-])
+   ```python
+   model = keras.models.Sequential([
+           keras.layers.SimpleRNN(20, return_sequences=True, input_shape=[None, 1]),
+           keras.layers.SimpleRNN(20, return_sequences=True),
+           keras.layers.SimpleRNN(1)
+    ])
 
-model.compile(loss="mse", optimizer="adam")
-history = model.fit(X_train, y_train, epochs=20,
-                    validation_data=(X_valid, y_valid))
+    model.compile(loss="mse", optimizer="adam")
+    history = model.fit(X_train, y_train, epochs=20,
+                        validation_data=(X_valid, y_valid))
 
-model.evaluate(X_valid, y_valid)
-```
-</p>
-</details>
+    model.evaluate(X_valid, y_valid)
+    ```
+    </p>
+    </details>
  
 **Forecasting Several Time Steps Ahead**
 
 In the example, we will predict *n* = 10 steps ahead.
+<details><summary>regenerate the sequences with 9 more time steps</summary>
+<p> 
+ 
+```python
+n_steps = 50
+series = generate_time_series(10000, n_steps + 10)
+X_train, Y_train = series[:7000, :n_steps], series[:7000, -10:, 0]
+X_valid, Y_valid = series[7000:9000, :n_steps], series[7000:9000, -10:, 0]
+X_test, Y_test = series[9000:, :n_steps], series[9000:, -10:, 0]
+```
+ </p>
+</details>
 
-baseline:
+**Baseline:**
 * **naive** (constant in the next *n* steps): MSE = 0.223
 * **linear model**: MSE = 0.0188
 
 
-Possible implementations:
+**Possible implementations:**
 * predict iteratively single next values (erros might accumulate), MSE = 0.029
   <details><summary>show code</summary>
   <p>
    
   ```python
-  series = generate_time_series(1, n_steps + 10)
-  X_new, Y_new = series[:, :n_steps], series[:, n_steps:]
-  X = X_new
+  X = X_valid
   for step_ahead in range(10):
-      y_pred_one = model.predict(X[:, step_ahead:])[:, np.newaxis, :]
+      y_pred_one = model.predict(X)[:, np.newaxis, :]
       X = np.concatenate([X, y_pred_one], axis=1)
 
-  Y_pred = X[:, n_steps:]
+  Y_pred = X[:, n_steps:, 0]
+  
   ```
+     
   </p>
   </details>
   
@@ -258,8 +273,21 @@ Possible implementations:
   <p>
    
   ```python
-  ...
+  model = keras.models.Sequential([
+    keras.layers.SimpleRNN(20, return_sequences=True, input_shape=[None, 1]),
+    keras.layers.SimpleRNN(20),
+    keras.layers.Dense(10)
+  ])
+
+  model.compile(loss="mse", optimizer="adam")
+  history = model.fit(X_train, Y_train, epochs=20,
+                    validation_data=(X_valid, Y_valid))
+  
+  series = generate_time_series(1, 50 + 10)
+  X_new, Y_new = series[:, :50, :], series[:, -10:, :]
+  Y_pred = model.predict(X_new)[..., np.newaxis] 
   ```
+   
   </p>
   </details>
 ...
@@ -267,15 +295,13 @@ Possible implementations:
 ### Handling Long Sequences
 
 #### Fighting the Unstable Gradients Problem
-Problem: ...
-
+Problem: ...  
 Solutions:
 * ...
 * ...
 
 #### Tackling the Short-Term Memory Problem
-Problem: ...
-
+Problem: ...  
 Solution: LSTM, GRU
 
 
